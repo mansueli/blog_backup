@@ -3,8 +3,8 @@ title: "Get WebFlow Collection items with Supabase"
 datePublished: Tue Apr 11 2023 17:01:39 GMT+0000 (Coordinated Universal Time)
 cuid: clgcif7240745gynv4i8ocw26
 slug: get-webflow-collection-items-with-supabase
-cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1681162575993/41b53e2e-d51f-4342-8f4f-9474467b39a8.png
-ogImage: https://cdn.hashnode.com/res/hashnode/image/upload/v1681162677595/4bbd801b-8393-461f-adb3-56c57f9f47ec.png
+cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1683040979228/c43b4c3c-5db9-49ca-af42-e1e2a56b967c.png
+ogImage: https://cdn.hashnode.com/res/hashnode/image/upload/v1683041007053/b2ad402d-df7e-4685-a421-8e841b379e07.png
 tags: postgresql, javascript, javascript-library, supabase, webflow
 
 ---
