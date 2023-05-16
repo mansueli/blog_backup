@@ -8,7 +8,7 @@ tags: postgresql, postgres, sql, supabase, superuser
 
 ---
 
-With the [security patch](https://github.com/orgs/supabase/discussions/9314) from Supabase revoking superuser access, many permissions were lost. However, it's worth noting that the Postgres user still retains significant power, and several restrictions do not apply on a per-table basis. This is particularly useful in scenarios where certain actions, such as disabling auto-vacuum during the import of a large dataset, are necessary.
+With the [security patch](https://github.com/orgs/supabase/discussions/9314) from [Supabase](https://supabase.com/) revoking superuser access, many permissions were lost. However, it's worth noting that the Postgres user still retains significant power, and several restrictions do not apply on a per-table basis. This is particularly useful in scenarios where certain actions, such as disabling auto-vacuum during the import of a large dataset, are necessary.
 
 To add tables to the "supabase\_realtime" publication, you can use the following command:
 
@@ -202,7 +202,7 @@ SELECT * FROM sudo('ALTER TABLE %I ENABLE ROW LEVEL SECURITY;');
 
 ## Conclusion
 
-In this blog post, we explored the usage of `sudo` with Postgres and Supabase, enabling powerful actions on tables while maintaining granular control. Despite the security patch from Supabase that revoked superuser access, we discovered that the Postgres user retains significant privileges, making it possible to perform certain operations that would otherwise be restricted. By leveraging the `sudo` function and utilizing schema-specific queries, we demonstrated how to disable auto-vacuum, enable Realtime and Row Level Security (RLS) for all tables, and even simulate triggers for event-based actions.
+In this blog post, we explored the usage of `sudo` with Postgres and Supabase, enabling powerful actions on tables while maintaining granular control. Despite the security patch from Supabase that revoked superuser access, we discovered that the Postgres user retains significant privileges, making it possible to perform certain operations that would otherwise be restricted. By leveraging the `sudo` function and utilizing schema-specific queries, we demonstrated how to disable auto-vacuum, enable Realtime and [Row Level Security](https://supabase.com/docs/guides/auth/row-level-security) (RLS) for all tables, and even simulate triggers for event-based actions.
 
 We also discussed the importance of maintaining security when using functions like `sudo`. It is crucial to restrict access to authorized users and revoke execution privileges for unauthorized individuals to prevent potential risks and data loss. By following the recommended precautions and properly configuring permissions, we can ensure the safety and integrity of our database environment.
 
