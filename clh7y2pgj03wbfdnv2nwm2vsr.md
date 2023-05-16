@@ -9,7 +9,7 @@ tags: javascript, terminal, nodejs, supabase, row-level-security
 
 ---
 
-Supabase-JS is an isomorphic JavaScript client for Supabase, a platform that provides a Postgres database, authentication, storage, and serverless functions. While Supabase-JS is commonly used for interacting with your database, listening to changes, managing users, and uploading files, did you know that you can also use it as a script to run tasks from your terminal? In this blog post, we will show you how to set up the environment for using Supabase-JS as you would call a Bash or Python script. This can be useful for performing operations on your data, testing your queries, or automating workflows.
+Supabase-JS is an isomorphic JavaScript client for [Supabase](https://supabase.com/), a platform that provides a Postgres database, authentication, storage, and serverless functions. While Supabase-JS is commonly used for interacting with your database, listening to changes, managing users, and uploading files, did you know that you can also use it as a script to run tasks from your terminal? In this blog post, we will show you how to set up the environment for using Supabase-JS as you would call a Bash or Python script. This can be useful for performing operations on your data, testing your queries, or automating workflows.
 
 ## Prerequisites
 
@@ -17,7 +17,7 @@ To follow along with this tutorial, you will need:
 
 * A Supabase account and project. You can sign up for free at [https://supabase.com](https://supabase.com)
     
-* Node.js and npm installed on your machine. You can check the versions by running `node -v` and `npm -v` in your terminal.
+* Node.js and npm are installed on your machine. You can check the versions by running `node -v` and `npm -v` in your terminal.
     
 * A code editor of your choice.
     
@@ -98,8 +98,8 @@ In the next part, we will write a simple script to connect to your Supabase data
 
 ## Creating the script
 
-Now that we have the library installed, let's create a new file `service_script.js` in our project folder. This is where we will write our Supabase-JS code.  
-  
+Now that we have the library installed, let's create a new file `service_script.js` in our project folder. This is where we will write our Supabase-JS code.
+
 To use Supabase-JS, we need to import the `createClient` function from the library and create an instance of the client with our project URL and public API key. You can find these values in your Supabase dashboard under [Settings &gt; API](https://app.supabase.com/project/_/settings/api).
 
 ```javascript
@@ -203,4 +203,4 @@ We can call the script like in the previous example:
 node logged_script.js
 ```
 
-In this blog post, we learned how to use Supabase-JS in a Node.js environment to interact with our Supabase project. We also explored how to test RLS policies using a script authenticated with Supabase's API. By following the steps outlined here, you'll be able to build powerful and secure applications with Supabase and test your policies with the client libraries.
+In this blog post, we learned how to use Supabase-JS in a Node.js environment to interact with our Supabase project. We also explored how to test RLS policies using a script authenticated with Supabase's API. By following the steps outlined here, you can build powerful and secure applications with Supabase and test your policies with the client libraries.
