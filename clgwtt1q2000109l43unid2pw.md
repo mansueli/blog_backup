@@ -69,9 +69,9 @@ void main() {
         // Patern to be used (more on this later)
         final pattern = request.url.queryParameters['p'] ?? '';
         // Main, secondary & text colors to be used
-        final pcolor = request.url.queryParameters['pcolor'] ?? '#040703';
-        final scolor = request.url.queryParameters['scolor'] ?? '#055C13';
-        final text_color = request.url.queryParameters['text_color'] ?? '#FFFFFF';
+        final pcolor = '#' + (request.url.queryParameters['pcolor'] ?? '040703');
+        final scolor = '#' + (request.url.queryParameters['scolor'] ?? '055C13');
+        final text_color = '#' + (request.url.queryParameters['text_color'] ?? 'FFFFFF');
         // Returns the image with the proper headers:
         final svg = generateOGImage(text, int.parse(height), int.parse(length), pattern, pcolor, scolor, text_color);
         final headers = Headers({'Content-Type': 'image/svg+xml', 'Cache-Control': 'public, max-age=3600'});
@@ -330,3 +330,9 @@ In conclusion, Supabase Edge Functions, coupled with Dart Edge, offer a convenie
 ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1682460778352/f96dea63-4da9-4a4b-a7b6-494058ed3c34.svg align="center")
 
 ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1682460798975/5c2ede1f-9401-4f53-acfe-38233921562f.svg align="center")
+
+Feel free to generate your own images with the link below:
+
+[https://jpzwvyukydqlzwgvncyj.functions.supabase.co/dart\_edge?p=radial&text=dart%20edge&pcolor=222&scolor=FFCCFF&text\_color=FFFF00](https://jpzwvyukydqlzwgvncyj.functions.supabase.co/dart_edge?p=radial&text=dart%20edge&pcolor=222&scolor=FFCCFF&text_color=FFFF00)
+
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1684762178098/fde0d67e-721a-418e-8ec0-0a7a5f805a0a.png align="center")
