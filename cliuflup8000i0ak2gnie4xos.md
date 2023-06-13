@@ -197,7 +197,7 @@ The function then performs an `INSERT` operation into the `track_users` table, w
 
 The `track_user` function acts as a bridge between Fingerprint-JS and the PostgreSQL database, allowing the collection and storage of user data for tracking and analysis purposes.
 
-## **Part 3: Front-end Tracking Example**
+## **Front-end Tracking Example**
 
 In this section, we will provide an example of how to create a simple HTML file with JavaScript to demonstrate how to use Fingerprint.js and Supabase to track user data. This example will show you how to integrate the tracking functionality into your front-end application.
 
