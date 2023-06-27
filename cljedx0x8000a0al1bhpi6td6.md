@@ -1,9 +1,10 @@
 ---
-title: "Creating a Pseudo MySQL Foreign Data
- Wrapper for Supabase using PostgreSQL and Supabase's Edge Functions"
+title: "How to Create a Pseudo MySQL Foreign Data Wrapper for Supabase with PostgreSQL and Edge Functions"
+seoTitle: "Creating a Pseudo MySQL Foreign Data Wrapper for Supabase: A Guide"
+seoDescription: "This comprehensive guide explores the motivation behind the wrapper, its functionality, and how it enables developers to seamlessly fetch data from MySQL."
 datePublished: Tue Jun 27 2023 14:30:12 GMT+0000 (Coordinated Universal Time)
 cuid: cljedx0x8000a0al1bhpi6td6
-slug: creating-a-pseudo-mysql-foreign-data-wrapper-for-supabase-using-postgresql-and-supabases-edge-functions
+slug: mysql-foreign-data-wrapper-supabase-postgresql-edge-functions
 cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1687551170409/b4a3ec10-b49f-476a-ab38-a79d69a954fe.png
 tags: postgresql, mysql, supabase, edge-functions, fdw
 
