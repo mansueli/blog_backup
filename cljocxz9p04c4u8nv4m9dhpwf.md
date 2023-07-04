@@ -172,43 +172,6 @@ Finally, we handle any errors that may occur during the password update process 
 
 This Edge function serves as a crucial component in implementing secure password verification and update functionality using Supabase and PostgreSQL.
 
-### Calling the Edge Function in React
-
-To update the password securely, we need to call the Edge function from our React application. Let's dive into the process step by step.
-
-First, we define an asynchronous function called `updatePassword()`. This function handles the password update logic and communicates with the Edge function. Here's an example of how the function looks:
-
-```javascript
-async function updatePassword() {
-  try {
-    setLoading(true)
-
-    if (!user) throw new Error('No user')
-
-    if (newPassword !== confirmNewPassword) {
-      alert('New passwords do not match!')
-      return
-    }
-
-    // Call the secure update password function
-    const { data, error } = await supabase.functions.invoke('secure_update_password',{ body: {
-      "oldPassword": oldPassword,
-      "newPassword": newPassword
-      }
-    });
-
-    if (error) throw error
-
-    alert('Password updated!')
-  } catch (error) {
-    alert('Error updating the password!')
-    console.log(error)
-  } finally {
-    setLoading(false)
-  }
-}
-```
-
 ### **Calling the Edge Function in React**
 
 To update the password securely, we need to call the Edge function from our React application. Let's dive into the process step by step.
