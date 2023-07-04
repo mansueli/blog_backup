@@ -209,9 +209,6 @@ async function updatePassword() {
 }
 ```
 
-  
-Certainly! Here's a revised version of the "Calling the Edge Function in React" section, providing more detailed explanations while considering SEO optimization:
-
 ### **Calling the Edge Function in React**
 
 To update the password securely, we need to call the Edge function from our React application. Let's dive into the process step by step.
