@@ -1,5 +1,7 @@
 ---
 title: "Using custom claims & testing RLS with Supabase"
+seoTitle: "How to use and test Supabase PostgreSQL Row-Level Security"
+seoDescription: "Learn how to implement custom claims and test row-level security (RLS) with Supabase and PostgreSQL. Improve the efficiency of your access control rules."
 datePublished: Wed Mar 29 2023 16:04:52 GMT+0000 (Coordinated Universal Time)
 cuid: clftvo3ex000509l6erb05i9f
 slug: using-custom-claims-testing-rls-with-supabase
@@ -9,19 +11,30 @@ tags: postgresql, json, debugging, supabase, row-level-security
 
 ---
 
-The blog post discusses the implementation of custom claims in a Supabase project, which involves adding JSON data to the access token of an authenticated user to improve the efficiency of row-level security (RLS) policies. The custom claims are stored in the raw\_app\_meta\_data field of the users' table in the auth schema. By using custom claims, the access control rules for a particular row can be stored directly in the token, reducing the need for computationally expensive JOIN operations and improving query times and application performance. The blog post provides an example case and instructions on how to test RLS policies using Supabase's helper SQL procedures.
+This article will guide you through the process of using custom claims and testing row-level security (RLS) with Supabase and PostgreSQL. By incorporating custom claims, you can enhance the efficiency of your access control rules and improve your application's performance. We will provide examples, instructions, and best practices to help you implement and test RLS policies effectively.
 
-## Custom claims
+### **Custom Claims: Enhancing Row-Level Security**
 
-One approach for creating custom claims in a Supabase project involves adding JSON data to the access token received by an authenticated user upon logging into the application. These custom claims can be read and utilized by both the application and the PostgreSQL database server. The custom claims are stored in the `raw_app_meta_data` field of the `users` table in the `auth` schema, specifically `auth.users.raw_app_meta_data`.
+Custom claims involve adding JSON data to the access token of an authenticated user in a Supabase project. These claims can be utilized by both the application and the PostgreSQL database server. In Supabase, custom claims are stored in the `raw_app_meta_data` field of the `users` table in the `auth` schema (`auth.users.raw_app_meta_data`).
 
-The advantage of implementing custom claims in this way is that it can improve the efficiency of row-level security (RLS) policies. RLS policies allow for fine-grained access control at the row level within the database. When using RLS policies, it is common to use JOINs to determine the access control rules for a particular row. However, JOINs can be computationally expensive, especially when dealing with large datasets.
+The primary advantage of implementing custom claims is their ability to improve the efficiency of row-level security (RLS) policies. RLS policies allow for fine-grained access control at the row level within the database. Traditionally, JOIN operations are used to determine the access control rules for a particular row. However, these JOINs can be computationally expensive, especially when dealing with large datasets.
 
-By using custom claims, you can store the access control rules for a particular row directly in the token itself, instead of needing to perform a JOIN operation. This approach can reduce the computational load on the database server, resulting in faster query times and improved application performance.
+By leveraging custom claims, you can store the access control rules for a specific row directly in the token itself, eliminating the need for JOIN operations. This approach reduces the computational load on the database server, resulting in faster query times and improved application performance.
 
-### Example case:
+### **Example Case: Implementing RLS with Custom Claims**
 
-We'll have a `teams` table in addition to the Supabase users table and a `team_members` that associates users with teams.
+Let's consider an example scenario where we have a `teams` table in addition to the Supabase users table. We also have a `team_members` table that associates users with teams. Here's an overview of the steps involved:
+
+1. Create the necessary tables in Supabase: `teams` and `team_members`.
+    
+2. Define the relationships and constraints between the tables.
+    
+3. Populate the tables with relevant data.
+    
+4. Set up an RLS policy for the `team_members` table to control access based on the user's team membership.
+    
+
+To ensure a seamless implementation, follow the steps below:
 
 Let's create the tables in Supabase:
 
@@ -49,11 +62,11 @@ Setting up an RLS policy for the table:
 
 ## Testing RLS policies
 
-Row-Level Security (RLS) is a feature in Postgres that provides additional security to restrict access to rows in a table based on user-defined policies. Supabase, an open-source alternative to Firebase, provides support for RLS policies. To test these policies on the database, Supabase provides a way to use the helper SQL procedures that allow switching between different roles and testing the policies on the database.
+To ensure that your RLS policies are functioning correctly, it's crucial to test them. Supabase provides a way to test these policies using helper SQL procedures. These procedures allow you to switch between different roles and simulate user access to the database.
 
 ## Helper SQL procedures (setting it up)
 
-To use the helper SQL procedures to test the policies run this snippet:
+To set up the helper SQL procedures for testing, follow these steps:
 
 ```sql
 grant anon, authenticated to postgres;
@@ -168,3 +181,9 @@ postgres=> select * from team_members;
 -- Logout:
 postgres=> call auth.logout();
 ```
+
+From here, you can simulate different user accesses and test the RLS policies using the helper SQL procedures.
+
+## **Conclusion**
+
+By implementing custom claims and testing row-level security (RLS) with Supabase and PostgreSQL, you can enhance the efficiency of your access control rules and improve application performance. This article provided an overview of custom claims, example scenarios, and instructions on testing RLS policies using Supabase's helper SQL procedures. Remember to balance SEO optimization techniques with valuable content that satisfies your readers' intent.
