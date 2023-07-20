@@ -1,11 +1,13 @@
 ---
 title: "User self-deletion with Supabase"
+seoTitle: "Supabase User Self-Deletion: Empower Users with Edge Functions"
+seoDescription: "Learn how to enable self-deletion and user invalidation with Supabase edge functions. Empower users while maintaining security. Read more on Mansueli's Tips"
 datePublished: Wed Apr 05 2023 16:22:50 GMT+0000 (Coordinated Universal Time)
 cuid: clg3we5xe000509mm3sixce9r
 slug: user-self-deletion-with-supabase
 cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1683040187205/71d8fd9d-e798-410b-9815-e0ff28bf9556.png
 ogImage: https://cdn.hashnode.com/res/hashnode/image/upload/v1683040215743/8c7319ab-3476-484d-b76b-85c2283c24ea.png
-tags: javascript, nextjs, supabase, edge-functions
+tags: user-experience, javascript, nextjs, supabase, edge-functions
 
 ---
 
