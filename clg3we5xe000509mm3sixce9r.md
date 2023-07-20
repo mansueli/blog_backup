@@ -1,27 +1,33 @@
 ---
-title: "User self-deletion with Supabase"
+title: "Supabase User Self-Deletion: Empower Users with Edge Functions"
 seoTitle: "Supabase User Self-Deletion: Empower Users with Edge Functions"
-seoDescription: "Learn how to enable self-deletion and user invalidation with Supabase edge functions. Empower users while maintaining security. Read more on Mansueli's Tips"
+seoDescription: "Learn how to enable self-deletion and user invalidation through soft-deletes with Supabase Edge Functions. Empower users while maintaining security."
 datePublished: Wed Apr 05 2023 16:22:50 GMT+0000 (Coordinated Universal Time)
 cuid: clg3we5xe000509mm3sixce9r
-slug: user-self-deletion-with-supabase
+slug: supabase-user-self-deletion-empower-users-with-edge-functions
 cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1683040187205/71d8fd9d-e798-410b-9815-e0ff28bf9556.png
 ogImage: https://cdn.hashnode.com/res/hashnode/image/upload/v1683040215743/8c7319ab-3476-484d-b76b-85c2283c24ea.png
 tags: user-experience, javascript, nextjs, supabase, edge-functions
 
 ---
 
-Today, we will look at an exciting new project that leverages the power of Supabase and edge functions to build a user management system that includes self-deletion or user invalidation (soft-delete).
+If you're looking to enhance user management in your applications, Supabase and Edge functions have the perfect solution. In this guide, we'll explore how to enable self-deletion and user invalidation, providing users with greater control over their accounts while maintaining top-notch security.
 
-If you're unfamiliar with Supabase, it's a powerful open-source platform that makes it easy to build and scale database-backed applications. With Supabase, you can quickly create APIs, handle authentication and authorization, and even deploy serverless functions that run right at the edge of your network.
+## **Leveraging Supabase for Powerful User Management**
+
+[**Supabase**](https://supabase.com) is an open-source platform that simplifies database-backed application development. From APIs to authentication and serverless functions, Supabase offers an all-in-one solution for robust applications.
+
+In this tutorial, we'll build upon the user management example provided in [**Supabase's GitHub repository**](https://github.com/supabase/supabase/tree/master/examples/user-management/nextjs-ts-user-management). By leveraging the Next.js user management example, we already have the foundation for sign-up, login, and password reset functionalities.
+
+## **Taking User Management to the Next Level**
+
+Our goal is to enhance the user management system with self-deletion and user invalidation capabilities. With these features, users can choose to delete their accounts, while administrators can disable or invalidate accounts when necessary.
 
 Our starting point for this project is the user management example that Supabase provides in their [GitHub repository](https://github.com/supabase/supabase/tree/master/examples/user-management/nextjs-ts-user-management). Specifically, we'll use the Next.js user management example as our base code. This project already includes a lot of the functionality you'll need to build a robust user management system, including sign-up, login, and password reset flows.
 
 However, we will take things a step further by adding self-deletion and user invalidation capabilities to the system. This will allow users to delete their accounts if they choose to and also give administrators the ability to disable or invalidate user accounts if necessary.
 
 To achieve this, we'll leverage Supabase's edge functions, which allow you to run serverless code right at the edge of your network, close to your users. This makes it possible to build highly responsive and scalable applications that can handle many user interactions.
-
-So if you're ready to take your user management system to the next level, read on to learn how to expand the Supabase user management example with self-deletion and user invalidation capabilities using edge functions!
 
 ### Setting the `profiles` table cascade deletions:
 
@@ -37,7 +43,9 @@ Make sure this model looks exactly like this on the delete cascade. What this do
 
 ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1680706002504/f1cf418b-da6a-46c3-900b-8bf266bcada0.png align="center")
 
-## Extending the functionality in the web app
+### **Extending Web App Functionality**
+
+In the web app, we'll create a delete function that handles the deletion request. By importing the router and setting modal states, we enable a smooth deletion process for users.
 
 We'll need to import the router and set the modal states for the Accounts.tsx file:
 
@@ -108,7 +116,7 @@ Then, adding the self-deletion feature:
       )}
 ```
 
-You can find the full code for this [Account.tsx](https://github.com/mansueli/subapase-user-self-deletion-nextjs/blob/main/components/Account.tsx) component on GitHub. Now, we'll add a very small [CSS adjustment](https://github.com/mansueli/subapase-user-self-deletion-nextjs/blob/main/styles/globals.css#L34-L36) to make the deletion buttons red:
+You can find the complete code for this [Account.tsx](https://github.com/mansueli/subapase-user-self-deletion-nextjs/blob/main/components/Account.tsx) component on GitHub. Now, we'll add a tiny [CSS adjustment](https://github.com/mansueli/subapase-user-self-deletion-nextjs/blob/main/styles/globals.css#L34-L36) to make the deletion buttons red:
 
 ```css
 .button.error {
@@ -120,11 +128,11 @@ Example:
 
 ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1680710772789/333b81c6-ec41-4b05-b09e-557f0d03c9d0.png align="center")
 
-## User deletion
+With these updates, users can now delete their accounts while also experiencing a seamless logout process.
+
+## **Implementing Self-Deletion with Edge Functions:**
 
 Now, we will create the edge functions that will perform the user deletion/data invalidation. Both functions should be easily replaceable in the web code.
-
-### Edge Function for deletion:
 
 ```javascript
 import { serve } from 'https://deno.land/std@0.182.0/http/server.ts'
@@ -202,9 +210,9 @@ const { data: avatar_deletion, error: avatar_error } = await supabaseAdmin
       .remove(file_urls)
 ```
 
-## User invalidation
+## **Implementing User Invalidation with Edge Functions**
 
-### Edge Function to invalidate the user:
+In addition to self-deletion, we'll implement user invalidation capabilities using edge functions. This allows administrators to disable users when required. Here's how to set it up:
 
 ```javascript
 import { serve } from 'https://deno.land/std@0.182.0/http/server.ts'
@@ -276,6 +284,8 @@ You'll need to deploy either of these functions with the [Supabase CLI](https://
 supabase functions deploy user-self-deletion
 ```
 
-In conclusion, Supabase is a powerful platform to help you build robust and scalable database-backed applications. By leveraging edge functions and the user management example provided by Supabase, we've shown how you can expand your user management system to include self-deletion and user invalidation capabilities.
+By deploying these functions using the [**Supabase CLI**](https://supabase.com/docs/reference/cli/supabase-functions-deploy), we create a powerful user management system with self-deletion and user invalidation features.
 
-With these features, you can empower your users to manage their own accounts while giving administrators the tools they need to maintain control and security. I hope this blog post has inspired you to explore the possibilities of Supabase and edge functions in your own projects.
+Supabase and edge functions offer incredible possibilities for user management. Expanding the user management example with self-deletion and user invalidation empowers users while maintaining the utmost security. Implement these techniques in your projects to take user management to the next level.
+
+For more tutorials and insights on Supabase and Postgres, explore [**Mansueli's Tips**](https://blog.mansueli.com/)!
