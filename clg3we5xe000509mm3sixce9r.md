@@ -286,6 +286,6 @@ supabase functions deploy user-self-deletion
 
 By deploying these functions using the [**Supabase CLI**](https://supabase.com/docs/reference/cli/supabase-functions-deploy), we create a powerful user management system with self-deletion and user invalidation features.
 
-Supabase and edge functions offer incredible possibilities for user management. Expanding the user management example with self-deletion and user invalidation empowers users while maintaining the utmost security. Implement these techniques in your projects to take user management to the next level.
+Supabase and edge functions offer incredible possibilities for user management. Expanding the user management example with self-deletion and user invalidation empowers users while maintaining the utmost security. Implement these techniques in your projects to take user management to the next level. We also have a guide for [Testing Supabase Edge Functions](https://blog.mansueli.com/testing-supabase-edge-functions-with-deno-test) which also works for Dart Edge.
 
 For more tutorials and insights on Supabase and Postgres, explore [**Mansueli's Tips**](https://blog.mansueli.com/)!
