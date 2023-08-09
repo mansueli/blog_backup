@@ -255,7 +255,7 @@ In this section, we will provide an example of how to create a simple HTML file 
 </html>
 ```
 
-To try the front-end tracking example yourself, you can access the live demo on StackBlitz. Simply click on the following link to access the demo:
+You can see that the Supabase RPC was implemented in the same way we did on the [WebFlow article](https://blog.mansueli.com/get-webflow-collection-items-with-supabase). To try the front-end tracking example yourself, you can access the live demo on StackBlitz. Simply click on the following link to access the demo:
 
 [**Live Demo - Front-end Tracking Example**](https://stackblitz.com/edit/web-platform-d7b6mr?devToolsHeight=33&file=index.html)
 
