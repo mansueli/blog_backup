@@ -10,7 +10,9 @@ tags: unit-testing, deno, supabase, edge-functions
 
 ---
 
-Backend development requires robust and reliable tools in today's rapidly evolving technology landscape. While Firebase has been a go-to choice for many developers, there is now an open-source alternative called Supabase that offers a PostgreSQL-based backend. [Supabase](https://supabase.com/) combines the robustness of PostgreSQL with the ease of use and scalability of Firebase, providing a compelling solution for backend development. One crucial aspect of utilizing Supabase is testing its Edge Functions, which play a vital role in extending the functionality of your application while ensuring its reliability. In this blog post, we will explore the process of setting up Supabase, delve into the world of Supabase Edge Functions, and learn how to write and test a simple `hello-world` function and run Edge Functions locally for efficient development.
+Backend development requires robust and reliable tools in today's rapidly evolving technology landscape. While Firebase has been a go-to choice for many developers, there is now an open-source alternative called Supabase that offers a PostgreSQL-based backend. [Supabase](https://supabase.com/) combines the robustness of PostgreSQL with the ease of use and scalability of Firebase, providing a compelling solution for backend development.
+
+One crucial aspect of utilizing Supabase is testing its Edge Functions, which play a vital role in extending the functionality of your application while ensuring its reliability. In this blog post, we will explore the process of setting up Supabase, delve into the world of Supabase Edge Functions, and learn how to write and test a simple `hello-world` function and run Edge Functions locally for efficient development. I previously wrote about [testing Supabase-JS in your terminal](https://blog.mansueli.com/using-supabase-js-as-a-script-in-your-terminal) which can also help to build a foundation.
 
 ### Setting up Supabase and PostgreSQL
 
@@ -135,7 +137,8 @@ Testing is a crucial step in the development process to ensure the correctness a
 
 ```typescript
 // deno-test.ts
-
+// This imported is needed to load the .env file:
+import "https://deno.land/x/dotenv/load.ts";
 // Import necessary libraries and modules
 import {
   assert,
@@ -252,7 +255,8 @@ To test and debug Edge Functions locally, you can utilize the Supabase CLI. Let'
 4. To run the tests, use the following command in your terminal:
     
     ```bash
-    deno test --allow-all deno-test.ts --env-file .env.local
+    #Place the .env file in the same directory as deno-test.ts
+    deno test --allow-all deno-test.ts
     ```
     
     Here's an example of what this would look like:
