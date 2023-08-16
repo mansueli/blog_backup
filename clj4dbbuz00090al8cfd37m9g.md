@@ -343,7 +343,7 @@ For an optimal setup that distributes the workload evenly, we can use sub-minute
 SET statement_timeout TO 0;
 CREATE OR REPLACE FUNCTION schedule_jobs()
 RETURNS VOID
-AS $$
+AS $body$
 BEGIN
     -- Schedule retry job
     SELECT cron.schedule(
@@ -372,7 +372,7 @@ BEGIN
         $$ SELECT process_current_jobs_if_unlocked(); $$
     );
 END;
-$$ LANGUAGE plpgsql;
+$body$ LANGUAGE plpgsql;
 ```
 
 In this example, we define the `schedule_jobs()` function to set up the scheduling. Firstly, we set the statement timeout to 0 to avoid any timeouts during the execution. Then, we schedule the retry job and the first job to run immediately. After that, we introduce a 20-second delay using `pg_sleep(20)` before scheduling the second and third jobs. This delay helps distribute the jobs evenly across multiple workers.
