@@ -96,6 +96,8 @@ With the groundwork laid for data relationships through foreign keys, let's delv
 
 Here's a fundamental JOIN operation between the `books` and `publishers` tables with this JavaScript code snippet:
 
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1692645687933/070a42a6-366f-4a5b-975f-985960fccac1.png align="center")
+
 ```javascript
 const { data, error } = await supabase  
       .from('books')
@@ -137,6 +139,8 @@ The outcome of this query presents a unified view of books alongside their corre
 
 Refine your queries by filtering based on attributes of the foreign table. Here's an illustrative example:
 
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1692645704800/5c700d73-95ea-4819-b21a-5addb64da494.png align="center")
+
 ```javascript
 const { data, error } = await supabase
     .from('books')
@@ -164,6 +168,8 @@ This query retrieves books published by "Bloomsbury" along with their correspond
 ### Uncover Insights with Foreign Table Count
 
 You can also use JOINs to retrieve aggregate data from the foreign table. This example showcases counting translations for each book:
+
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1692646263183/ac43ff37-cd79-4caf-ae01-a9970d938777.png align="center")
 
 ```javascript
 
@@ -207,9 +213,24 @@ const { data, error } = await supabase
 
 This query returns the books along with the count of translations for each.
 
+### Anti-Joins by checking for nulls
+
+It is possible to isolate the rows that are shared with the following approach:
+
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1692646155506/836a53fb-8b2a-4d92-a3ef-0f997aed3fb5.png align="center")
+
+```sql
+supabase
+  .from("books")
+  .select("*,translations()")
+  .is("translations", null)
+```
+
 ### Forging Relationships between Unrelated Tables
 
 Discover a surprising capability: establishing connections between seemingly unrelated tables via the parent table:
+
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1692645783952/f3e8cc43-c176-4425-b02f-bf42c6fc53c3.png align="center")
 
 ```javascript
 const { data, error } = await supabase
