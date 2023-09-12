@@ -10,7 +10,7 @@ tags: postgresql, mongodb, databases, migration, data-migration
 
 ---
 
-In the realm of database management, making informed decisions can significantly impact your application's performance and scalability. This comprehensive guide will offer you one possible way of migrating from MongoDB to [Supabase](http://supabase.com/) with PostgreSQL. There's an ongoing effort to improve this migration to make it seamless. 
+In the realm of database management, making informed decisions can significantly impact your application's performance and scalability. This comprehensive guide will offer you one possible way of migrating from MongoDB to [Supabase](http://supabase.com/) with PostgreSQL. There's an ongoing effort to improve this migration to make it seamless.
 
 ### Why Migrate from MongoDB to Supabase with PostgreSQL?
 
@@ -18,7 +18,7 @@ MongoDB has been a go-to choice for its flexibility, but as your project matures
 
 ## Understanding the Migration Process
 
-### 1.1. Why Choose Supabase and PostgreSQL for Your Migration?
+### Why Choose Supabase and PostgreSQL for Your Migration?
 
 To kick off your migration journey, let's delve into why Supabase and PostgreSQL are the great choices:
 
@@ -34,6 +34,7 @@ To kick off your migration journey, let's delve into why Supabase and PostgreSQL
 Before diving into the technical aspects, meticulous planning is paramount for a seamless migration. Considerations like data mapping, schema design, and data transformation require careful attention. As discussed in our previous article on ["Exploring Data Relationships with Supabase and PostgreSQL"](https://blog.mansueli.com/exploring-data-relationships-with-supabase-and-postgresql), understanding your data's structure is a crucial initial step.
 
 ## Running the Migration
+
 You can run the migration process using this Colab notebook I've prepared for your convenience. It provides step-by-step instructions to ensure a smooth transition from MongoDB to Supabase with PostgreSQL. Below, we'll go through the steps to set it up yourself:
 
 ## Preparing Your Environment
@@ -210,6 +211,7 @@ for db_name in mongo_db_names:
 pg_cur.close()
 pg_conn.close()
 ```
+
 This script simplifies the migration process by automating many of the essential tasks.
 
 ## Data Transformation and Beyond
@@ -254,11 +256,11 @@ In conclusion, migrating from MongoDB to Supabase with PostgreSQL can be a trans
 
 To further assist you in your migration journey, here are some additional resources:
 
-- [Supabase Documentation](https://supabase.com/docs): Explore Supabase's official documentation for in-depth information and guidance.
-
-- [PostgreSQL Official Documentation](https://www.postgresql.org/docs/): Dive into the official PostgreSQL documentation to expand your knowledge of this powerful database system.
-
-- [GitHub Repository with Migration Code Samples](https://github.com/mansueli/Supa-Migrate/blob/main/mongo2supabase.ipynb): Access our GitHub repository, where you can find detailed code samples and resources related to the migration process.
+* [Supabase Documentation](https://supabase.com/docs): Explore Supabase's official documentation for in-depth information and guidance.
+    
+* [PostgreSQL Official Documentation](https://www.postgresql.org/docs/): Dive into the official PostgreSQL documentation to expand your knowledge of this powerful database system.
+    
+* [GitHub Repository with Migration Code Samples](https://github.com/mansueli/Supa-Migrate/blob/main/mongo2supabase.ipynb): Access our GitHub repository, where you can find detailed code samples and resources related to the migration process.
+    
 
 Feel free to explore these resources as you embark on your journey to a more efficient and robust database solution. Happy migration!
-
