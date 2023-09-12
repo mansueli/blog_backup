@@ -99,7 +99,7 @@ from bson.decimal128 import Decimal128
 import pymongo
 import psycopg2
 from psycopg2.extensions import AsIs
-import json 
+import json
 from datetime import datetime
 from psycopg2 import sql, extensions, connect, Error
 from bson import ObjectId
@@ -108,11 +108,18 @@ import os
 mongo_url = os.environ['mongo_uri']
 supabase_url = os.environ['supabase_uri']
 
-class DateTimeEncoder(json.JSONEncoder):
+class CustomEncoder(json.JSONEncoder):
     def default(self, obj):
+        if isinstance(obj, ObjectId):
+          return str(obj)
         if isinstance(obj, datetime):
-            return obj.isoformat()
-        return super().default(obj)
+          return obj.isoformat()
+        if isinstance(obj, Decimal128):
+          return str(obj)
+        if isinstance(obj, complex):
+            return [obj.real, obj.imag]
+        return json.JSONEncoder.default(self, obj)
+
 
 psycopg2.extensions.register_adapter(Decimal128, lambda val: AsIs(str(val.to_decimal())))
 
@@ -125,15 +132,18 @@ pg_cur = pg_conn.cursor()
 
 # Mapping MongoDB types to PostgreSQL types
 SQL_DATA_TYPE = {
-    "string": "TEXT",
-    "ObjectId": "TEXT",
-    "datetime": "TIMESTAMP WITH TIME ZONE",
-    "int": "INT",
-    "list": "JSONB",
-    "dict": "JSONB",
-    "bool": "Boolean",
-    "float": "NUMERIC",
-    "default": "TEXT",
+  "str": "TEXT",
+  "ObjectId": "TEXT",
+  "datetime.datetime": "TIMESTAMP WITH TIME ZONE",
+  "datetime": "TIMESTAMP WITH TIME ZONE",
+  "int": "INT",
+  "list": "JSONB",
+  "dict": "JSONB",
+  "bool": "Boolean",
+  "float": "NUMERIC",
+  "default": "TEXT",
+  "NoneType":"TEXT",
+  "Decimal128":"NUMERIC",
 }
 
 # Store the type of each field
@@ -151,7 +161,7 @@ else:
 for db_name in mongo_db_names:
     print("Starting to migrate :"+ str(db_name))
     mongo_db = mongo_client[db_name]
-    
+
     # Iterate over all collections in the current database
     for collection_name in mongo_db.list_collection_names():
         # Skip system collections
@@ -198,7 +208,7 @@ for db_name in mongo_db_names:
                 # Add field and value to the lists
                 fields.append(sql.Identifier(field_with_type))
                 if isinstance(value, list) or isinstance(value, dict):
-                    value = json.dumps(value, cls=DateTimeEncoder)
+                    value = json.dumps(value, cls=CustomEncoder)
                 values.append(value)
 
             # Insert data into PostgreSQL
