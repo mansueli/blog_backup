@@ -17,7 +17,7 @@ If you're looking to enhance user management in your applications, Supabase and 
 
 [**Supabase**](https://supabase.com) is an open-source platform that simplifies database-backed application development. From APIs to authentication and serverless functions, Supabase offers an all-in-one solution for robust applications.
 
-In this tutorial, we'll build upon the user management example provided in [**Supabase's GitHub repository**](https://github.com/supabase/supabase/tree/master/examples/user-management/nextjs-ts-user-management). By leveraging the Next.js user management example, we already have the foundation for sign-up, login, and password reset functionalities.
+In this tutorial, we'll build upon the user management example provided in [**Supabase's GitHub repository**](https://github.com/mansueli/supabase-user-self-deletion-nextjs). By leveraging the Next.js user management example, we already have the foundation for sign-up, login, and password reset functionalities.
 
 ## **Taking User Management to the Next Level**
 
@@ -284,7 +284,7 @@ You'll need to deploy either of these functions with the [Supabase CLI](https://
 supabase functions deploy user-self-deletion
 ```
 
-By deploying these functions using the [**Supabase CLI**](https://supabase.com/docs/reference/cli/supabase-functions-deploy), we create a powerful user management system with self-deletion and user invalidation features.
+By deploying these functions using the [**Supabase CLI**](https://supabase.com/docs/reference/cli/supabase-functions-deploy), we create a powerful user management system with self-deletion and user invalidation features. The full example is in the [User Self-Deletion NextJS repo](https://github.com/mansueli/supabase-user-self-deletion-nextjs).
 
 Supabase and edge functions offer incredible possibilities for user management. Expanding the user management example with self-deletion and user invalidation empowers users while maintaining the utmost security. Implement these techniques in your projects to take user management to the next level. We also have a guide for [Testing Supabase Edge Functions](https://blog.mansueli.com/testing-supabase-edge-functions-with-deno-test) which also works for Dart Edge.
 
