@@ -1,10 +1,10 @@
 ---
-title: "How to Boost Supabase Reliability: A Guide to Using Postgres Foreign Data Wrappers"
+title: "How to Boost Supabase: A Guide to Using Postgres Foreign Data Wrappers"
 seoTitle: "How to Boost Supabase Reliability: Guide for Foreign Data Wrappers"
 seoDescription: "Learn how to enhance Supabase project reliability by leveraging Foreign Data Wrappers. Discover seamless integration for improved robustness."
 datePublished: Tue Aug 15 2023 14:50:11 GMT+0000 (Coordinated Universal Time)
 cuid: cllcf7gr4000008mcacp28byp
-slug: how-to-boost-supabase-reliability-a-guide-to-using-postgres-foreign-data-wrappers
+slug: how-to-boost-supabase-a-guide-to-using-postgres-foreign-data-wrappers
 cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1692110853459/cb4bbb06-3e08-4a8d-94b8-431086b95489.png
 tags: postgresql, databases, sql, supabase, fdw
 
