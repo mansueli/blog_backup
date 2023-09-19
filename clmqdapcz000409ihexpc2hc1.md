@@ -151,6 +151,7 @@ CREATE TABLE public.profiles (
   CONSTRAINT profiles_id_fkey FOREIGN KEY (id) REFERENCES auth.users (id) ON DELETE CASCADE,
   CONSTRAINT username_length CHECK (char_length(username) >= 3)
 );
+ALTER TABLE public.profiles ENABLE ROW LEVEL SECURITY;
 ```
 
 You can read more about creating such a table in [Managing User Data](https://supabase.com/docs/guides/auth/managing-user-data#creating-user-tables).
