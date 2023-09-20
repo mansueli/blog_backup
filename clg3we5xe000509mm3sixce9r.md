@@ -132,7 +132,14 @@ With these updates, users can now delete their accounts while also experiencing 
 
 ## **Implementing Self-Deletion with Edge Functions:**
 
-Now, we will create the edge functions that will perform the user deletion/data invalidation. Both functions should be easily replaceable in the web code.
+Now, we will create the edge functions that will perform the user deletion/data invalidation. Both functions should be easily replaceable in the web code. We'll be using this [cors.ts](https://github.com/mansueli/supabase-user-self-deletion-nextjs/blob/main/supabase/functions/_shared/cors.ts) file for handling the CORS headers:
+
+```sql
+export const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+}
+```
 
 ```javascript
 import { serve } from 'https://deno.land/std@0.182.0/http/server.ts'
