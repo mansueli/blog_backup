@@ -126,7 +126,14 @@ To allow users to invite other users to your Supabase application, you can creat
 
 The function then extracts the email and team ID from the request data, creates a Supabase client with the Auth context of the logged-in user, and gets the user's session or user object. It then runs a query to check if the user is an owner of the specified team. If the user is not an owner of the team, the function returns a 403 Forbidden response.
 
-The function then creates a Supabase Admin client, which has elevated privileges. It uses this client to invite the specified email to the project and retrieve the new user's ID. It then sets custom claims for the user, indicating that they are a member of the specified team.
+The function then creates a Supabase Admin client, which has elevated privileges. It uses this client to invite the specified email to the project and retrieve the new user's ID. It then sets custom claims for the user, indicating that they are a member of the specified team. We'll be using this [cors.ts](https://github.com/mansueli/supabase-user-self-deletion-nextjs/blob/main/supabase/functions/_shared/cors.ts) file for handling the CORS headers:
+
+```sql
+export const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+}
+```
 
 Here's the code for the "invite" function:
 
