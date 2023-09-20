@@ -63,7 +63,14 @@ This code leverages Supabase Edge Functions to handle user sign-in, enabling use
 
 ## Edge Function for Sign-In
 
-Within the authentication workflow, this edge function plays a pivotal role in managing sign-in requests. This function offers users greater flexibility by enabling them to use their usernames as an alternative login option.
+Within the authentication workflow, this edge function plays a pivotal role in managing sign-in requests. This function offers users greater flexibility by enabling them to use their usernames as an alternative login option. We'll be using this [cors.ts](https://github.com/mansueli/supabase-username-login/blob/main/supabase/functions/_shared/cors.ts) file for handling the CORS headers:
+
+```sql
+export const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+}
+```
 
 To set up the Edge Function for Sign-In, create a Deno script as follows:
 
