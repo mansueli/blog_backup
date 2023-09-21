@@ -71,6 +71,7 @@ END;
 $BODY$
 LANGUAGE plpgsql;
 -- Protect this function to be only available to service_role key:
+REVOKE EXECUTE ON FUNCTION get_email_template from public;
 REVOKE EXECUTE ON FUNCTION get_email_template FROM anon, authenticated;
 ```
 
