@@ -90,6 +90,7 @@ $$;
 To revoke access to this function for unauthorized users, you can use the following command:
 
 ```pgsql
+REVOKE EXECUTE ON FUNCTION sudo FROM public;
 REVOKE EXECUTE ON FUNCTION sudo FROM anon, authenticated;
 ```
 
