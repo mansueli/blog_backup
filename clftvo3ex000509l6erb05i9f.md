@@ -58,7 +58,19 @@ User's table:
 
 Setting up an RLS policy for the table:
 
-![](https://cdn.hashnode.com/res/hashnode/image/upload/v1680108506425/7c8b642a-ae91-453f-94ba-9ec41675ea32.png align="center")
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1695387073044/071d6f76-6bc9-4305-9063-32683c757de9.png align="center")
+
+### Claim set up for a user
+
+Now, we can set up a claim for a user in our system. You can create a user using the [Auth Admin API](https://supabase.com/docs/reference/javascript/auth-admin-createuser). Now, we can run this to set the claim for the user in the SQL Editor:
+
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1695387373422/0ee7f931-4c73-4c50-bbe9-52cc6a304185.png align="center")
+
+We can check the `auth.users` table to see this claim we included:
+
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1695387493549/041ce6d1-8fa3-4baf-82ac-664b2602a69e.png align="center")
+
+Note that there is already some extra metadata that was automatically entered by Supabase Auth when creating the user.
 
 ## Testing RLS policies
 
