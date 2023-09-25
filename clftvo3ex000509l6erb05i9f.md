@@ -199,3 +199,5 @@ From here, you can simulate different user accesses and test the RLS policies us
 ## **Conclusion**
 
 By implementing custom claims and testing row-level security (RLS) with Supabase and PostgreSQL, you can enhance the efficiency of your access control rules and improve application performance. This article provided an overview of custom claims, example scenarios, and instructions on testing RLS policies using Supabase's helper SQL procedures. Remember to balance SEO optimization techniques with valuable content that satisfies your readers' intent.
+
+You can also continue reading with another post where you can set triggers to [map the automatically the relationship between tables using custom claims](https://blog.mansueli.com/using-triggers-to-map-database-relationships-in-custom-claims).
