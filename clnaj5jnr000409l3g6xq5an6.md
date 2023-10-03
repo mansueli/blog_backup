@@ -253,6 +253,49 @@ REVOKE EXECUTE ON FUNCTION rollback_function FROM anon, authenticated;
 SELECT rollback_function('convert_to_uuid');
 ```
 
+### Setting up existing functions as the first version
+
+If you are starting with an existing database but want to start versioning from now. You can use this function below to archive all in the public schema.
+
+```sql
+CREATE OR REPLACE FUNCTION archive.setup_function_history(schema_name text default 'public')
+RETURNS VOID AS
+$$
+DECLARE
+  function_record record;
+BEGIN
+  -- Loop through existing functions in the specified schema
+  FOR function_record IN (
+    SELECT
+      n.nspname AS schema_name,
+      p.proname AS function_name,
+      pg_catalog.pg_get_function_arguments(p.oid) AS args,
+      pg_catalog.pg_get_function_result(p.oid) AS return_type,
+      pg_catalog.pg_get_functiondef(p.oid) AS source_code,
+      l.lanname AS lang_settings
+    FROM pg_catalog.pg_proc p
+    LEFT JOIN pg_catalog.pg_namespace n ON n.oid = p.pronamespace
+    LEFT JOIN pg_catalog.pg_language l ON l.oid = p.prolang
+    WHERE n.nspname = schema_name
+  )
+  LOOP
+    -- Insert information about the function into the history table
+    PERFORM archive.save_function_history(
+      function_record.function_name,
+      function_record.args,
+      function_record.return_type,
+      function_record.source_code,
+      function_record.schema_name,
+      function_record.lang_settings
+    );
+  END LOOP;
+END;
+$$
+LANGUAGE plpgsql;
+
+SELECT archive.setup_function_history();
+```
+
 ## Conclusion
 
 In conclusion, efficient management of PostgreSQL functions is crucial for web application development. Supabase, with its integration with PostgreSQL and the tools we've explored, offers a streamlined approach to function deployment and rollback.
