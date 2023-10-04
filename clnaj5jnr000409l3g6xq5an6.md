@@ -235,6 +235,8 @@ BEGIN
     function_text := regexp_replace(function_text, 'create function', 'create or replace function', 'i');
   END IF;
 
+  -- Drop current version:
+  EXECUTE format('DROP FUNCTION IF EXISTS %I.%I', schema_n, func_name);
   -- Execute the function text to create the function
   EXECUTE function_text;
 
