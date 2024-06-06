@@ -32,6 +32,10 @@ In this crucial step, we lay the foundation for secure communication. By creatin
 ```sql
 CREATE USER foreign_user WITH PASSWORD 'password' BYPASSRLS;
 
+GRANT USAGE 
+ON SCHEMA public 
+TO foreign_user;
+
 GRANT SELECT, INSERT, UPDATE, DELETE 
 ON ALL TABLES IN SCHEMA public 
 TO foreign_user;
