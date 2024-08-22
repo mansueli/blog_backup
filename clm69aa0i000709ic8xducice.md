@@ -146,9 +146,9 @@ DECLARE
   current_ip TEXT := hdr.ip();
   request_method TEXT := current_setting('request.method', TRUE);
 BEGIN
-  -- Only log non-GET requests because they are run
+  -- Only log requests that are not GET or HEAD because they are run
   -- in read-only transactions
-  IF request_method IS NULL OR request_method <> 'GET' THEN
+  IF request_method IS NULL OR request_method NOT IN ('GET', 'HEAD') THEN
     PERFORM register_request(current_ip);
   END IF;
 
