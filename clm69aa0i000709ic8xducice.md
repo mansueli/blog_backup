@@ -57,6 +57,14 @@ CREATE UNLOGGED TABLE request_log (
   ip inet NOT NULL,
   timestamp timestamptz DEFAULT NOW()
 );
+DROP SEQUENCE IF EXISTS request_log_id_seq;
+
+CREATE UNLOGGED SEQUENCE request_log_id_seq    
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
 ```
 
 The `request_log` table has three essential columns:
