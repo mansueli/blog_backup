@@ -57,10 +57,8 @@ CREATE UNLOGGED TABLE request_log (
   ip inet NOT NULL,
   timestamp timestamptz DEFAULT NOW()
 );
--- This logged sequence will cause issues to restore the DB if it is logged:
 DROP SEQUENCE IF EXISTS request_log_id_seq;
 
--- We recreate the sequence as an unlogged sequence:
 CREATE UNLOGGED SEQUENCE request_log_id_seq    
     START WITH 1
     INCREMENT BY 1
