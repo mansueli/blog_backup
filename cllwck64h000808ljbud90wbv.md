@@ -23,7 +23,7 @@ At the heart of our webhook implementation, a pivotal role is played by the `req
 
 ## Taking Charge of Your Automation: The Supabase Advantage
 
-While Supabase generously offers webhooks as part of its toolkit, it is worth contemplating the merits of deploying them independently. By taking the reins of deployment, you gain the freedom to expand the timeout window beyond a mere second, granting you greater control over the nature of the requests being executed. This strategic move allows you to tailor the automation to your specific needs, resulting in a more responsive and versatile system.
+While Supabase generously offers webhooks as part of its toolkit, it is worth contemplating the merits of deploying them independently. By taking the reins of deployment, you gain the freedom to expand the timeout window, granting you greater control over the nature of the requests being executed. This strategic move allows you to tailor the automation to your specific needs, resulting in a more responsive and versatile system.
 
 ```sql
 -- 
