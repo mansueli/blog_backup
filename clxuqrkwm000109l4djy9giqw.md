@@ -16,16 +16,13 @@ This blog post explores the limitations of default Supabase webhooks and how pgw
 
 ## Understanding the Need for Integration
 
-Integrating databases with external services presents several challenges. The default approach for Postgres webhooks with pg_net might fall short when you need to process the results of a call or handle high volumes that could overwhelm the worker process. Additionally, Supabase's built-in webhooks currently lack the ability to customize the payload before sending it to external services.
+Integrating databases with external services presents several challenges. The default approach for Postgres webhooks with pg\_net might fall short when you need to process the results of a call or handle high volumes that could overwhelm the worker process. Additionally, Supabase's built-in webhooks currently lack the ability to customize the payload before sending it to external services.
 
 ## Introducing pgwebhook: A revamped Webhook experience
 
 `pgwebhook` is more than just a webhook solution; it's a comprehensive extension designed to streamline Postgres integration with webhooks. Built with reliable technology like cURL (through [pghttp](https://github.com/pramsey/pgsql-http)), pgwebhook ensures dependable and performant HTTP requests. It surpasses traditional webhook functionalities by offering features like:
 
-`Automatic Fallbacks`: Ensures uninterrupted operation even during edge function failures.
-`Regional Fallbacks`:  *(exclusive for edge functions)* Guarantees compliance with regulations like GDPR by allowing you to restrict calls to specific regions.
-Customizable Payloads: Provides flexibility in tailoring the data sent to external services.
-Seamless Supabase Integration: Integrates effortlessly with the Supabase platform, making it an ideal choice for Supabase users.
+`Automatic Fallbacks`: Ensures uninterrupted operation even during edge function failures. `Regional Fallbacks`: *(exclusive for edge functions)* Guarantees compliance with regulations like GDPR by allowing you to restrict calls to specific regions. Customizable Payloads: Provides flexibility in tailoring the data sent to external services. Seamless Supabase Integration: Integrates effortlessly with the Supabase platform, making it an ideal choice for Supabase users.
 
 ## Installation and Setup
 
@@ -184,8 +181,8 @@ FOR EACH ROW EXECUTE FUNCTION hook.webhook_trigger(
 );
 ```
 
-**However, you can also get more:**  
-  
+**However, you can also get more:**
+
 `pgwebhook` goes beyond Supabase webhooks by enabling triggers that automatically handle retries and regional headers. This ensures compliance with regulations like GDPR and maintains service availability during regional outages.
 
 #### Create a Trigger Using a PL/pgSQL Custom Handler
@@ -220,31 +217,6 @@ FOR EACH ROW EXECUTE FUNCTION hook.webhook_trigger(
 );
 ```
 
-#### Create a Trigger Using a PLv8 Custom Handler
-
-```sql
-CREATE OR REPLACE FUNCTION hook.custom_handler_function_js(payload jsonb)
-RETURNS jsonb AS $$
-var newPayload = payload;
-
-// Modify the payload: Add new field and remove a sensitive field
-newPayload.additional_info = 'This is extra info';
-delete newPayload.sensitive_field;
-
-return newPayload;
-$$ LANGUAGE plv8;
-
-CREATE TRIGGER your_trigger_name
-AFTER INSERT OR UPDATE OR DELETE ON your_table
-FOR EACH ROW EXECUTE FUNCTION hook.webhook_trigger(
-    'https://your-webhook-url.com',
-    'POST',
-    '{"Content-Type": "application/json"}',
-    '{}',
-    5000,
-    'hook.custom_handler_function_js'
-);
-```
 ## Conclusion
 
 `pgwebhook` is a promising new Postgres Trusted Language Extension that simplifies and streamlines webhook integration for Supabase users. Its robust feature set, including automatic retries, regional fallbacks, and customizable payloads, addresses common challenges associated with managing webhooks effectively. By leveraging `pgwebhook`, developers can enhance their Supabase workflows and ensure reliable communication between databases and external services.
