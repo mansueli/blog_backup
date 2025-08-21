@@ -15,7 +15,7 @@ Managing API keys seems easy at first, but it involves many choices. You need ke
 
 In this post, you will learn a simple pattern with Supabase, PostgreSQL, and KSUID (via the pg_idkit extension). By the end, you get SQL code to add to your database. You also get workflows to create, check, and list API keys. This setup is optimized for Supabase users, with tips on the Supabase CLI and JavaScript client. It helps with secure API key management in Supabase.
 
-For more on secrets in Supabase, see our previous post on [Supabase Vault](https://supabase.com/blog/supabase-vault). If you work with PostgreSQL extensions, check out [Trusted Language Extensions for Postgres](https://supabase.com/blog/pg-tle).
+For more on secrets in Supabase, see previous posts on [Supabase Vault](https://supabase.com/blog/supabase-vault). If you work with PostgreSQL extensions, check out [Trusted Language Extensions for Postgres](https://supabase.com/blog/pg-tle) which is used on this blog post.
 
 ---
 
