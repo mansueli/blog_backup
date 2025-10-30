@@ -334,7 +334,7 @@ dbdev add \
 supabase db push
 ```
 
-It adds new domains and keeps data. Watch releases on [GitHub repo](https://github.com/mansueli/email_guard).
+It adds new domains and keeps data. Watch releases on [GitHub repo](https://github.com/mansueli/tle/tree/master/email_guard).
 
 ---
 
@@ -540,7 +540,7 @@ It runs in the database, so it is clear, checked, and hard to skip.
 5. **Update** when new versions come.
 
 For more, see:
-- [email_guard GitHub repository](https://github.com/mansueli/email_guard)
+- [email_guard GitHub repository](https://github.com/mansueli/tle/tree/master/email_guard)
 - [Supabase Auth Hooks documentation](https://supabase.com/docs/guides/auth/auth-hooks)
 - [Trusted Language Extensions blog post](https://supabase.com/blog/pg-tle)
 - [database.dev package registry](https://database.dev)
